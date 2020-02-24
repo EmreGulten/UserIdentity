@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<hr />
+
+
+
+
+@*User.Identity.IsAuthenticated*@
+@if (TempData["user"] != null)
+{
+    var data = (UserIdentity.Identity.ApplicationUser)TempData["user"];
+    <label class="label label-info">
+        @data.UserName
+    </label>
+    <a href="/Account/Logout" class="btn btn-danger">Logout</a>
+}
+else
+{
+    <a href="/Account/Login" class="btn btn-success">Login</a>
+    <a href="/Account/Register" class="btn btn-primary">Register</a>
+}
